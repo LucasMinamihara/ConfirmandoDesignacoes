@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+html {
+  font-size: 10px;
+}
+
+.entradas:visited,
+.entradas:focus,
+.entradas {
+  padding: 2rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  border-radius: 10px;
+  border: transparent;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.botao {
+  padding: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 700px;
+  border: transparent;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  transition-duration: 0.3s;
+}
+
+.botao:hover {
+  background-color: #001;
+}
+
+.posicao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 400px;
+  margin: 0 auto;
+  gap: 30px;
+}
