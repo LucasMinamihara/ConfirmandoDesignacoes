@@ -3,7 +3,8 @@ import Adicionar from "./components/adicionar";
 import Header from "./components/Header";
 import "./App.css";
 import classes from "./Listagem.module.css";
-import { server } from "./components/axios";
+import { server } from "./lib/axios";
+import EditarDeletar from "./components/editarDeletar";
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
@@ -11,49 +12,26 @@ function App() {
   // Pegar os dados quando iniciar a aplicação!!!
 
   useEffect(() => {
-    try {
-      server.get("/designacao").then((res) => {
-        let todosOsDados = res.data;
-        todosOsDados.map((dados) => {
-          let id = Math.random();
-          let { tipo } = dados;
-          let { principal } = dados;
-          let { ajudante } = dados;
-          setTarefas([
-            ...tarefas,
-            {
-              id,
-              tipo,
-              principal,
-              ajudante,
-            },
-          ]);
-        });
-        console.log(tarefas);
-      });
-    } catch (err) {
-      console.error(err);
-    }
-    console.log("i fire once");
+    server.get("/designacao").then(async (res) => {
+      const designacoes = await res.data;
+      setTarefas(...tarefas, designacoes);
+    });
   }, []);
-
   return (
     <>
-      <Header></Header>
-      <Adicionar tarefas={tarefas} setTarefas={setTarefas}></Adicionar>
-      {tarefas.map((cadaObjeto) => {
-        console.log("eu já entreei aqui!");
+      <Header />
+      <Adicionar setTarefas={setTarefas} tarefas={tarefas} />
+      {tarefas.map((tarefa) => {
         return (
-          <div className={classes.borda} key={cadaObjeto.id}>
-            <div className={classes.principal}>
-              Designação: {cadaObjeto.tipo}
-            </div>
-            <div className={classes.nomes}>
-              Principal: {cadaObjeto.nomePrincipal}
-            </div>
-            <div className={classes.nomes}>
-              Ajudante: {cadaObjeto.nomeAjudante}
-            </div>
+          <div className={classes.borda} key={tarefa._id}>
+            <div className={classes.principal}>Designação: {tarefa.tipo}</div>
+            <div className={classes.nomes}>Principal: {tarefa.principal}</div>
+            <div className={classes.nomes}>Ajudante: {tarefa.ajudante}</div>
+            <EditarDeletar
+              identificador={tarefa.id}
+              setTarefas={setTarefas}
+              tarefas={tarefas}
+            />
           </div>
         );
       })}

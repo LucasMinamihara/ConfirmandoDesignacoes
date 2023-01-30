@@ -1,39 +1,40 @@
 import { useState } from "react";
 import classes from "./adicionar.module.css";
-import axios from "axios";
+import { server } from "../lib/axios";
 
 function Adicionar(props) {
-  const [designacao, setDesignacao] = useState("");
+  const [tipo, setTipo] = useState("");
   const [principal, setPrincipal] = useState("");
   const [ajudante, setAjudante] = useState("");
 
-  async function adicionarParte(e) {
+  async function adicionarDados(e) {
     e.preventDefault();
+    console.log(tipo);
 
-    props.setTarefas([
-      ...props.tarefas,
-      {
-        id: Math.random() * 100000000000000,
-        tipo: designacao,
-        nomePrincipal: principal,
-        nomeAjudante: ajudante,
-      },
-    ]);
+    if ((tipo, principal, ajudante)) {
+      const dadosParaAdicionar = { tipo, principal, ajudante };
 
-    await axios.post("http://localhost:5000/designacao", {
-      designacao,
-      principal,
-      ajudante,
-    });
+      const dadosParaAdicionarComID = await server
+        .post("/designacao", { dadosParaAdicionar })
+        .then((res) => {
+          console.log("Nova designação adicionada com sucesso! ");
+        });
+
+      console.log(dadosParaAdicionarComID);
+
+      props.setTarefas([...props.tarefas, dadosParaAdicionarComID]);
+    } else {
+      console.log("alguns dados estão pendnetes!");
+    }
   }
 
   return (
-    <form className={classes.posicao} onSubmit={adicionarParte}>
+    <form className={classes.posicao} onSubmit={adicionarDados}>
       <input
         placeholder="Tipo de Designação"
         className={classes.entradas}
-        onChange={(e) => setDesignacao(e.target.value)}
-        value={designacao}
+        onChange={(e) => setTipo(e.target.value)}
+        value={tipo}
       ></input>
       <input
         placeholder="nome do(a) principal"
