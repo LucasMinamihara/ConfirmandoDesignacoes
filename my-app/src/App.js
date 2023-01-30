@@ -17,18 +17,22 @@ function App() {
       setTarefas(...tarefas, designacoes);
     });
   }, []);
+
   return (
     <>
       <Header />
       <Adicionar setTarefas={setTarefas} tarefas={tarefas} />
       {tarefas.map((tarefa) => {
         return (
-          <div className={classes.borda} key={tarefa._id}>
+          <div
+            className={classes.borda}
+            key={tarefa._id ? tarefa._id : Math.random()}
+          >
             <div className={classes.principal}>Designação: {tarefa.tipo}</div>
             <div className={classes.nomes}>Principal: {tarefa.principal}</div>
             <div className={classes.nomes}>Ajudante: {tarefa.ajudante}</div>
             <EditarDeletar
-              identificador={tarefa.id}
+              identificador={tarefa._id}
               setTarefas={setTarefas}
               tarefas={tarefas}
             />

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
-const Person = require("./models/Person");
+const Person = require("./models/Designacao");
 
 function acessandoBanco() {
   mongoose

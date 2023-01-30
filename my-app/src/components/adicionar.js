@@ -9,20 +9,15 @@ function Adicionar(props) {
 
   async function adicionarDados(e) {
     e.preventDefault();
-    console.log(tipo);
 
     if ((tipo, principal, ajudante)) {
       const dadosParaAdicionar = { tipo, principal, ajudante };
 
-      const dadosParaAdicionarComID = await server
-        .post("/designacao", { dadosParaAdicionar })
-        .then((res) => {
-          console.log("Nova designação adicionada com sucesso! ");
-        });
+      await server.post("/designacao", dadosParaAdicionar).then((res) => {
+        console.log("Nova designação adicionada com sucesso! ");
+      });
 
-      console.log(dadosParaAdicionarComID);
-
-      props.setTarefas([...props.tarefas, dadosParaAdicionarComID]);
+      props.setTarefas([...props.tarefas, { tipo, principal, ajudante }]);
     } else {
       console.log("alguns dados estão pendnetes!");
     }

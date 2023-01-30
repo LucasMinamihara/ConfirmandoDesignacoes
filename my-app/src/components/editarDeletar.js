@@ -2,9 +2,25 @@ import classes from "../Listagem.module.css";
 import { server } from "../lib/axios";
 
 function EditarDeletar(props) {
-  function editarDados() {}
+  // Editando Designação!
 
-  function deletarDados() {}
+  function editarDados() {
+    console.log(
+      "estou editando a designação que possui o seguinte identificador " +
+        props.identificador
+    );
+  }
+
+  // Deletando Designação
+  function deletarDados() {
+    server.delete(`/designacao/${props.identificador}`).then((res) => {
+      console.log(
+        `Designação com o id ${props.identificador} removido com sucesso!`
+      );
+
+      return props.setTarefas([...props.tarefas, props.tarefas]);
+    });
+  }
 
   return (
     <>
