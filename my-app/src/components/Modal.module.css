@@ -1,0 +1,51 @@
+html {
+  font-size: 10px;
+}
+
+.container {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+.modal {
+  width: 50rem;
+  height: 30rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.9);
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-items: center;
+  background-color: rgb(165, 154, 154);
+  border-radius: 2rem;
+}
+
+.input {
+  width: 70%;
+  height: 30%;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.input,
+.button {
+  outline: none;
+}
+
+.button {
+  width: 80%;
+  height: 40%;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);
+}

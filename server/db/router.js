@@ -3,32 +3,55 @@ const router = express.Router();
 const Designacao = require("./models/Designacao");
 
 router.get("/", (req, res) => {
-  res.status(200).send("você está acessando a API");
+  try {
+    res.status(200).send("você está acessando a API");
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.get("/designacao", async (req, res) => {
-  const designacao = await Designacao.find();
-  res.status(200).json(designacao);
+  try {
+    const designacao = await Designacao.find();
+    res.status(200).json(designacao);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.post("/designacao", async (req, res) => {
   // Criando o valor enviado pelo frontend
 
-  console.log(req.body);
-
-  const cadaDesignacao = await Designacao.create(req.body);
-
-  return res.status(201).json(cadaDesignacao);
+  try {
+    const cadaDesignacao = await Designacao.create(req.body);
+    res.status(201).json(cadaDesignacao);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.delete("/designacao/:id", async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  console.log(id);
+    await Designacao.findByIdAndDelete(id);
 
-  const designacaoRemovida = await Designacao.findByIdAndDelete(id);
-  console.log(designacaoRemovida);
-  return res.status(201).json("Designação removida com sucesso!");
+    res.status(201).json("Designação removida com sucesso!");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+router.put("/designacao/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Designacao.findByIdAndUpdate(id, req.body);
+
+    res.status(200).send("Dado editado com sucesso!");
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 module.exports = router;

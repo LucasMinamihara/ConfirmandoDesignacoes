@@ -10,17 +10,20 @@ function Adicionar(props) {
   async function adicionarDados(e) {
     e.preventDefault();
 
-    if ((tipo, principal, ajudante)) {
-      const dadosParaAdicionar = { tipo, principal, ajudante };
-
-      await server.post("/designacao", dadosParaAdicionar).then((res) => {
-        console.log("Nova designação adicionada com sucesso! ");
-      });
-
-      props.setTarefas([...props.tarefas, { tipo, principal, ajudante }]);
-    } else {
-      console.log("alguns dados estão pendnetes!");
+    if (!tipo || !principal || !ajudante) {
+      alert("Alguns dados estão pendentes! ");
+      return;
     }
+
+    const dados = { tipo, principal, ajudante };
+
+    await server.post("/designacao", dados).then((res) => {
+      props.setTarefas([...props.tarefas, res.data]);
+    });
+
+    setTipo("");
+    setPrincipal("");
+    setAjudante("");
   }
 
   return (
