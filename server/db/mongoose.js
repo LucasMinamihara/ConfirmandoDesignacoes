@@ -9,7 +9,7 @@ function acessandoBanco() {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("Banco conectado com sucesso!");
+      console.log("Banco de dados conectado!");
     })
     .catch((err) => {
       console.log(err);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import classes from "./adicionar.module.css";
+import classes from "./Adicionar.module.css";
 import { server } from "../lib/axios";
 
 function Adicionar(props) {

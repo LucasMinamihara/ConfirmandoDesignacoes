@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Adicionar from "./components/adicionar";
+import Adicionar from "./components/Adicionar";
 import Header from "./components/Header";
 import "./App.css";
 import classes from "./Listagem.module.css";
 import { server } from "./lib/axios";
-import EditarDeletar from "./components/editarDeletar";
+import EditarDeletar from "./components/EditarDeletar";
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
