@@ -1,4 +1,4 @@
-import classes from "../Listagem.module.css";
+import classes from "./Listagem.module.css";
 import { server } from "../lib/axios";
 import { useState } from "react";
 import Modal from "./Modal";

@@ -13,6 +13,7 @@ html {
   border-radius: 10px;
   border: transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
 .botao {
@@ -24,10 +25,7 @@ html {
   background-color: #000;
   color: #fff;
   transition-duration: 0.3s;
-}
-
-.botao:hover {
-  background-color: #001;
+  cursor: pointer;
 }
 
 .posicao {

@@ -2,9 +2,21 @@ import React, { useEffect, useState } from "react";
 import Adicionar from "./components/Adicionar";
 import Header from "./components/Header";
 import "./App.css";
-import classes from "./Listagem.module.css";
+import classes from "./components/Listagem.module.css";
 import { server } from "./lib/axios";
 import EditarDeletar from "./components/EditarDeletar";
+import Confirmado from "./components/Confirmado";
+
+function pegarSegundaFeiraDaSemana() {
+  const data = new Date();
+
+  const dia = data.getDay() || 7;
+
+  if (dia !== 1) {
+    data.setHours(-24 * (dia - 1));
+  }
+  return data;
+}
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
@@ -16,11 +28,13 @@ function App() {
       const designacoes = await res.data;
       setTarefas(...tarefas, designacoes);
     });
+    console.log("i am inside this block");
   }, []);
 
   return (
     <>
-      <Header />
+      <Header pegarSegundaFeiraDaSemana={pegarSegundaFeiraDaSemana} />
+      <Confirmado pegarSegundaFeiraDaSemana={pegarSegundaFeiraDaSemana} />
       <Adicionar setTarefas={setTarefas} tarefas={tarefas} />
       {tarefas.map((tarefa) => {
         return (

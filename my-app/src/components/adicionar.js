@@ -35,18 +35,18 @@ function Adicionar(props) {
         value={tipo}
       ></input>
       <input
-        placeholder="nome do(a) principal"
+        placeholder="Nome do(a) principal"
         className={classes.entradas}
         onChange={(e) => setPrincipal(e.target.value)}
         value={principal}
       ></input>
       <input
-        placeholder="nome do(a) ajudante"
+        placeholder="Nome do(a) ajudante"
         className={classes.entradas}
         onChange={(e) => setAjudante(e.target.value)}
         value={ajudante}
       ></input>
-      <button className={classes.botao}>Adicionar Designação</button>
+      <button className={classes.botao}>Adicionar Substituição!</button>
     </form>
   );
 }

@@ -15,11 +15,7 @@ function Modal(props) {
     setTipo(tarefaAtual.tipo);
     setPrincipal(tarefaAtual.principal);
     setAjudante(tarefaAtual.ajudante);
-
-  }, []);
-
-
-
+  }, [props.identificador, props.tarefas]);
 
   function aoClicar() {
     props.setMostrarModal(false);
@@ -38,12 +34,19 @@ function Modal(props) {
 
       return novasTarefas;
     });
-
-    server
-      .put(`/designacao/${props.identificador}`, { tipo, principal, ajudante })
-      .then((res) => {
-        console.log(res.data);
-      });
+    try {
+      server
+        .put(`/designacao/${props.identificador}`, {
+          tipo,
+          principal,
+          ajudante,
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
 
     props.setMostrarModal(false);
   }
@@ -73,7 +76,7 @@ function Modal(props) {
           value={ajudante}
           onChange={(e) => setAjudante(e.target.value)}
         />
-        <button className={classes.button}>Editar</button>
+        <button className={classes.button}>Adicionar Substituição</button>
       </form>
     </div>
   );

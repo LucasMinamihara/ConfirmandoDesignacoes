@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const router = require("./db/router");
+const router = require("./db/routes/user.routes");
 const PORT = 5000;
 const cors = require("cors");
 const { urlencoded } = require("express");
