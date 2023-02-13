@@ -26,13 +26,20 @@ html {
 @media (max-width: 345px) {
   .centro {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 }
+
+@media (max-width: 344px) {
+  .centro {
+    font-size: 1.7rem;
+  }
+}
+
 @media (max-width: 330px) {
   .centro {
     width: 100%;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 }
