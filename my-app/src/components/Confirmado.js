@@ -17,6 +17,16 @@ function Confirmado(props) {
 
         dados.filter((cadaConfirmacao) => {
           if (
+            cadaConfirmacao.dia !== props.pegarSegundaFeiraDaSemana().getDate()
+          ) {
+            server.delete("/deletandoTudo").then((res) => {
+              console.log(res.data);
+              setJaConfirmadoLucas(false);
+              setConfirmadoLucas(false);
+              return;
+            });
+          }
+          if (
             cadaConfirmacao.nome === "Lucas" &&
             cadaConfirmacao.confirmado === true
           ) {
@@ -32,6 +42,16 @@ function Confirmado(props) {
         const dados = res.data;
 
         dados.filter((cadaConfirmacao) => {
+          if (
+            cadaConfirmacao.dia !== props.pegarSegundaFeiraDaSemana().getDate()
+          ) {
+            server.delete("/deletandoTudo").then((res) => {
+              console.log(res.data);
+              setJaConfirmadoErik(false);
+              setConfirmadoErik(false);
+              return;
+            });
+          }
           if (
             cadaConfirmacao.nome === "Erik" &&
             cadaConfirmacao.confirmado === true

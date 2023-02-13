@@ -76,7 +76,7 @@ function Modal(props) {
           value={ajudante}
           onChange={(e) => setAjudante(e.target.value)}
         />
-        <button className={classes.button}>Adicionar Substituição</button>
+        <button className={classes.button}>Alterar!</button>
       </form>
     </div>
   );

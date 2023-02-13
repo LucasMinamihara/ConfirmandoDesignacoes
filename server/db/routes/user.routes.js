@@ -9,6 +9,7 @@ const {
   confirmandoDesignacaoErik,
   deletandoDesignacao,
   atualizandoDesignacao,
+  deletandoTudo,
 } = require("../controllers/user.controller");
 
 const router = express.Router();
@@ -31,5 +32,7 @@ router.post("/confirmadoErik", confirmandoDesignacaoErik);
 router.delete("/designacao/:id", deletandoDesignacao);
 
 router.put("/designacao/:id", atualizandoDesignacao);
+
+router.delete("/deletandoTudo", deletandoTudo);
 
 module.exports = router;

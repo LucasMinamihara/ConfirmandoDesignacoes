@@ -30,3 +30,31 @@
   position: absolute;
   padding: 1rem;
 }
+
+@media (max-width: 768px) {
+  .containerConfirmado {
+    display: flex;
+    width: 30rem;
+    position: static;
+    margin: auto;
+  }
+}
+
+@media (max-width: 490px) {
+  .containerConfirmado {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 375px) {
+  .containerConfirmado {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 330px) {
+  .containerConfirmado {
+    width: 15rem;
+  }
+}

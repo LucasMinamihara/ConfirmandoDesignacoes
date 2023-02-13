@@ -37,7 +37,7 @@ const confirmandoDesignacaoLucas = async (req, res) => {
 
 const retornoConfirmacaoErik = async (req, res) => {
   const dia = await Confirmado.find(req.body.dia);
-  
+
   res.status(200).send(dia);
 };
 
@@ -75,6 +75,16 @@ const atualizandoDesignacao = async (req, res) => {
   }
 };
 
+const deletandoTudo = async (req, res) => {
+  try {
+    await Designacao.deleteMany();
+    await Confirmado.deleteMany();
+    res.status(200).send("deletando tudo com sucesso!");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   procurandoDesignacao,
   criandoDesignacao,
@@ -84,4 +94,5 @@ module.exports = {
   confirmandoDesignacaoErik,
   deletandoDesignacao,
   atualizandoDesignacao,
+  deletandoTudo,
 };

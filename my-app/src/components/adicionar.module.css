@@ -10,18 +10,18 @@ html {
   padding: 2rem;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  border-radius: 10px;
+  border-radius: 1rem;
   border: transparent;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
   outline: none;
 }
 
 .botao {
   padding: 1rem;
   font-family: "Lato", sans-serif;
-  font-weight: 700px;
+  font-weight: 700;
   border: transparent;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #000;
   color: #fff;
   transition-duration: 0.3s;
@@ -32,7 +32,40 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  width: 400px;
+  width: 40rem;
   margin: 0 auto;
-  gap: 30px;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .posicao {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 490px) {
+  .entradas:visited,
+  .entradas:focus,
+  .entradas {
+    width: 80%;
+    margin: auto;
+  }
+  .botao {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .entradas:visited,
+  .entradas:focus,
+  .entradas {
+    width: 60%;
+    margin: auto;
+  }
+  .botao {
+    width: 60%;
+    margin: auto;
+  }
 }
