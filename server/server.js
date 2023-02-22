@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const router = require("./db/routes/user.routes");
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 const { urlencoded } = require("express");
 const { acessandoBanco } = require("./db/mongoose");
